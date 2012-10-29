@@ -18,7 +18,10 @@
 #
 
 package "collectd" do
-  package_name "collectd-core"
+ package_name value_for_platform(
+  ["debian","ubuntu"] => { "default" => "collectd-core" },
+  "default" => "collectd"
+ ) 
 end
 
 service "collectd" do
